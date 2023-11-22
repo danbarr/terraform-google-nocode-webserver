@@ -30,7 +30,7 @@ locals {
 
 resource "random_integer" "product" {
   min = 0
-  max = length(var.hashi_products) - 1
+  max = length(local.hashi_products) - 1
   keepers = {
     "timestamp" = local.timestamp
   }
@@ -125,9 +125,9 @@ resource "null_resource" "configure-web-app" {
 
   provisioner "file" {
     content = templatefile("files/index.html", {
-      product_name  = var.hashi_products[random_integer.product.result].name
-      product_color = var.hashi_products[random_integer.product.result].color
-      product_image = var.hashi_products[random_integer.product.result].image_file
+      product_name  = local.hashi_products[random_integer.product.result].name
+      product_color = local.hashi_products[random_integer.product.result].color
+      product_image = local.hashi_products[random_integer.product.result].image_file
     })
     destination = "/var/www/html/index.html"
   }
@@ -136,4 +136,44 @@ resource "null_resource" "configure-web-app" {
     source      = "files/img/"
     destination = "/var/www/html/img"
   }
+}
+
+locals {
+  hashi_products = [
+    {
+      name       = "Consul"
+      color      = "#dc477d"
+      image_file = "hashicafe_art_consul.png"
+    },
+    {
+      name       = "HCP"
+      color      = "#ffffff"
+      image_file = "hashicafe_art_hcp.png"
+    },
+    {
+      name       = "Nomad"
+      color      = "#60dea9"
+      image_file = "hashicafe_art_nomad.png"
+    },
+    {
+      name       = "Packer"
+      color      = "#63d0ff"
+      image_file = "hashicafe_art_packer.png"
+    },
+    {
+      name       = "Terraform"
+      color      = "#844fba"
+      image_file = "hashicafe_art_terraform.png"
+    },
+    {
+      name       = "Vagrant"
+      color      = "#2e71e5"
+      image_file = "hashicafe_art_vagrant.png"
+    },
+    {
+      name       = "Vault"
+      color      = "#ffec6e"
+      image_file = "hashicafe_art_vault.png"
+    }
+  ]
 }
