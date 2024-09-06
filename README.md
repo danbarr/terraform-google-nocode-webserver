@@ -27,10 +27,6 @@ For no-code provisioning, Google credentials must be supplied to the workspace v
 | <a name="provider_random"></a> [random](#provider\_random) | ~> 3.4 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
 
-## Modules
-
-No modules.
-
 ## Resources
 
 | Name | Type |
@@ -47,9 +43,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Specifies the GCP instance type. | `string` | `"g1-small"` | no |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | This prefix will be included in the name of most resources. | `string` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | ID of your GCP project. | `string` | n/a | yes |
+| <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Specifies the GCP instance type. | `string` | `"g1-small"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region where the resources are created. | `string` | `"us-central1"` | no |
 | <a name="input_subnet_prefix"></a> [subnet\_prefix](#input\_subnet\_prefix) | The address prefix to use for the subnet. | `string` | `"10.0.10.0/24"` | no |
 | <a name="input_zone"></a> [zone](#input\_zone) | The zone where the resources are created. | `string` | `"us-central1-b"` | no |
